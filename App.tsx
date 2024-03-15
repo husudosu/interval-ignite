@@ -1,6 +1,6 @@
 import React from 'react';
-import {SafeAreaView, useColorScheme} from 'react-native';
-
+import {useColorScheme} from 'react-native';
+import {PaperProvider} from 'react-native-paper';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {HomeView} from './views/HomeView';
 
@@ -12,9 +12,9 @@ function App(): React.JSX.Element {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
+    <PaperProvider>
       <HomeView />
-    </SafeAreaView>
+    </PaperProvider>
   );
 }
 
