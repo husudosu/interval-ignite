@@ -1,17 +1,16 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
-import {Button, Text} from 'react-native-paper';
+import {Button} from 'react-native-paper';
 import {IntervalSelector} from '../components/IntervalSelector';
-import {CountdownCircleTimer} from 'react-native-countdown-circle-timer';
 
-export const HomeView = () => {
+interface Props {
+  navigation: any;
+}
+
+export const HomeView = ({navigation}: Props) => {
   const [intervalMinutes, setIntervalMinutes] = useState('0');
   const [intervalSeconds, setIntervalSeconds] = useState('10');
   const [timerStarted, setTimerStarted] = useState(false);
-
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [duration, setDuration] = useState(0);
-  const [key, setKey] = useState(0);
 
   const onStartPress = () => {
     if (!timerStarted) {
@@ -19,17 +18,11 @@ export const HomeView = () => {
       const intervalMinutesInt = parseInt(intervalMinutes, 10);
       const intervalSecondsInt = parseInt(intervalSeconds, 10);
       if (!isNaN(intervalMinutesInt) && !isNaN(intervalSecondsInt)) {
-        setDuration(intervalMinutesInt * 60 + intervalSecondsInt);
+        navigation.replace('Countdown', {
+          intervalLength: intervalMinutesInt * 60 + intervalSecondsInt,
+        });
       }
     }
-    setIsPlaying(!isPlaying);
-  };
-
-  const onCountdownComplete = () => {
-    setIsPlaying(false);
-    setTimerStarted(false);
-    setDuration(0);
-    setKey(key + 1);
   };
 
   return (
@@ -41,17 +34,7 @@ export const HomeView = () => {
         setIntervalSeconds={setIntervalSeconds}
       />
 
-      <Button onPress={onStartPress}>{!isPlaying ? 'Start' : 'Pause'}</Button>
-      <CountdownCircleTimer
-        key={key}
-        onComplete={onCountdownComplete}
-        isPlaying={isPlaying}
-        duration={duration}
-        initialRemainingTime={0}
-        colors={['#004777', '#F7B801', '#A30000', '#A30000']}
-        colorsTime={[7, 5, 2, 0]}>
-        {({remainingTime}) => <Text>{remainingTime}</Text>}
-      </CountdownCircleTimer>
+      <Button onPress={onStartPress}>Start</Button>
     </View>
   );
 };

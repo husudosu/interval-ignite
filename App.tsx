@@ -5,6 +5,7 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {HomeView} from './views/HomeView';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {CountdownView} from './views/CountdownView';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +21,7 @@ function App(): React.JSX.Element {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Home" component={HomeView} />
+          <Stack.Screen name="Countdown" component={CountdownView} />
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>
