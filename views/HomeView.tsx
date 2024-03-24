@@ -23,12 +23,14 @@ export const HomeView = ({navigation}: Props) => {
   const isLoading = useRef(true);
   const [timerStarted, setTimerStarted] = useState(false);
 
-  const loadSettings = () => {
-    console.log('Loading settings');
-    settings.getAllDataForKey('presets').then((data: IPreset[]) => {
-      setPresets(data);
-      console.log(data);
-    });
+  const loadSettings = async () => {
+    const ids = await settings.getIdsForKey('presets');
+    const res = await settings.getBatchDataWithIds({key: 'presets', ids: ids});
+    const newPresets = res.map((preset: any, index: number) => ({
+      id: ids[index],
+      ...preset,
+    }));
+    setPresets(newPresets);
   };
 
   useEffect(() => {
@@ -67,6 +69,12 @@ export const HomeView = ({navigation}: Props) => {
         loadSettings();
       });
   };
+
+  const onDeletePreset = (id: string) => {
+    settings.remove({key: 'presets', id}).then(() => {
+      loadSettings();
+    });
+  };
   // TODO: Add validation to fields only allow number input!
   return (
     <SafeAreaView>
@@ -103,7 +111,12 @@ export const HomeView = ({navigation}: Props) => {
 
         <Text>Presets</Text>
         {presets.map((preset, index) => (
-          <Preset key={index} preset={preset} navigation={navigation} />
+          <Preset
+            key={index}
+            preset={preset}
+            navigation={navigation}
+            onDelete={onDeletePreset}
+          />
         ))}
       </ScrollView>
     </SafeAreaView>
