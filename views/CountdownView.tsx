@@ -14,7 +14,7 @@ export const CountdownView = ({route, navigation}: Props) => {
   const [sets, setSets] = useState(0);
   const viewLoaded = useRef(false);
   const [key, setKey] = useState(0);
-
+  console.log(route.params);
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {

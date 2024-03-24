@@ -54,7 +54,7 @@ export const HomeView = ({navigation}: Props) => {
     }
   };
 
-  const onAddNewPreset = (preset: any) => {
+  const onAddNewPreset = (preset: IPreset) => {
     settings
       .save({
         key: 'presets',
@@ -103,7 +103,7 @@ export const HomeView = ({navigation}: Props) => {
 
         <Text>Presets</Text>
         {presets.map((preset, index) => (
-          <Preset key={index} preset={preset} />
+          <Preset key={index} preset={preset} navigation={navigation} />
         ))}
       </ScrollView>
     </SafeAreaView>

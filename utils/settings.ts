@@ -2,11 +2,11 @@ import Storage from 'react-native-storage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export interface IPreset {
-  presetName: string;
-  intervalMinutes: string;
-  intervalSeconds: string;
-  intervalSets: string;
-  intervalRestLength: string;
+  presetName: String;
+  intervalMinutes: Number;
+  intervalSeconds: Number;
+  intervalSets: Number;
+  intervalRestLength: Number;
 }
 
 export const settings = new Storage({
