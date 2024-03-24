@@ -6,6 +6,7 @@ import {HomeView} from './views/HomeView';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {CountdownView} from './views/CountdownView';
+import {RestCountdownView} from './views/RestCountdownView';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +23,7 @@ function App(): React.JSX.Element {
         <Stack.Navigator>
           <Stack.Screen name="Home" component={HomeView} />
           <Stack.Screen name="Countdown" component={CountdownView} />
+          <Stack.Screen name="RestCountdown" component={RestCountdownView} />
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>

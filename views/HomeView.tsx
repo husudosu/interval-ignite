@@ -9,7 +9,7 @@ interface Props {
 
 export const HomeView = ({navigation}: Props) => {
   const [intervalMinutes, setIntervalMinutes] = useState('0');
-  const [intervalSeconds, setIntervalSeconds] = useState('10');
+  const [intervalSeconds, setIntervalSeconds] = useState('2');
   const [timerStarted, setTimerStarted] = useState(false);
 
   const onStartPress = () => {
@@ -20,6 +20,8 @@ export const HomeView = ({navigation}: Props) => {
       if (!isNaN(intervalMinutesInt) && !isNaN(intervalSecondsInt)) {
         navigation.replace('Countdown', {
           intervalLength: intervalMinutesInt * 60 + intervalSecondsInt,
+          intervalSets: 3,
+          intervalRestLength: 5,
         });
       }
     }
