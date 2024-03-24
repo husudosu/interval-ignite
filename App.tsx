@@ -7,7 +7,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {CountdownView} from './views/CountdownView';
 import {RestCountdownView} from './views/RestCountdownView';
-
+import {SafeAreaView} from 'react-native';
 const Stack = createNativeStackNavigator();
 
 function App(): React.JSX.Element {
