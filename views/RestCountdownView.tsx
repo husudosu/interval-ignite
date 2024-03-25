@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {View} from 'react-native';
-import {Text} from 'react-native-paper';
+import {StyleSheet, View} from 'react-native';
+import {Text, Button} from 'react-native-paper';
 import {CountdownCircleTimer} from 'react-native-countdown-circle-timer';
 
 interface Props {
@@ -27,19 +27,47 @@ export const RestCountdownView = ({route, navigation}: Props) => {
     navigation.replace('Countdown', route.params);
   };
 
+  const onSkipPress = () => {
+    navigation.replace('Countdown', route.params);
+  };
+
   return (
-    <View>
+    <View style={styles.container}>
       <CountdownCircleTimer
         key={key}
         onComplete={onCountdownComplete}
         isPlaying={isPlaying}
         duration={duration}
         initialRemainingTime={0}
-        updateInterval={0.1}
         colors={['#004777', '#F7B801', '#A30000', '#A30000']}
         colorsTime={[7, 5, 2, 0]}>
         {({remainingTime}) => <Text>Rest: {remainingTime}</Text>}
       </CountdownCircleTimer>
+
+      <View style={styles.buttonContainer}>
+        <Button
+          onPress={() => setIsPlaying(!isPlaying)}
+          icon={isPlaying ? 'pause' : 'play'}>
+          {isPlaying ? 'Pause' : 'Continue'}
+        </Button>
+        <Button onPress={onSkipPress} icon="stop">
+          Skip
+        </Button>
+      </View>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonContainer: {
+    width: '50%',
+    marginTop: 16,
+    flexDirection: 'column',
+    gap: 8,
+  },
+});

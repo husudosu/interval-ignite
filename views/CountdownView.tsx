@@ -53,7 +53,6 @@ export const CountdownView = ({route, navigation}: Props) => {
         isPlaying={isPlaying}
         duration={duration}
         initialRemainingTime={0}
-        updateInterval={0.1}
         colors={['#004777', '#F7B801', '#A30000', '#A30000']}
         colorsTime={[7, 5, 2, 0]}>
         {({remainingTime}) => <Text>{remainingTime}</Text>}

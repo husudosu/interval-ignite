@@ -22,8 +22,16 @@ function App(): React.JSX.Element {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Home" component={HomeView} />
-          <Stack.Screen name="Countdown" component={CountdownView} />
-          <Stack.Screen name="RestCountdown" component={RestCountdownView} />
+          <Stack.Screen
+            name="Countdown"
+            component={CountdownView}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="RestCountdown"
+            component={RestCountdownView}
+            options={{headerShown: false}}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>
