@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Button, Text} from 'react-native-paper';
 import {CountdownCircleTimer} from 'react-native-countdown-circle-timer';
+import {SoundFile, playSound} from '../utils/sound';
 
 interface Props {
   route: any;
@@ -14,7 +15,6 @@ export const CountdownView = ({route, navigation}: Props) => {
   const [sets, setSets] = useState(0);
   const viewLoaded = useRef(false);
   const [key, setKey] = useState(0);
-  console.log(route.params);
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
@@ -25,6 +25,7 @@ export const CountdownView = ({route, navigation}: Props) => {
         console.log('Interval sets', intervalSets);
         setSets(intervalSets);
         setIsPlaying(true);
+        playSound(SoundFile.WHISTLE);
       } else {
         throw new Error('Interval sets not defined');
       }
