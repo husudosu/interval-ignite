@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {Button, TextInput} from 'react-native-paper';
 
 interface Props {
@@ -16,29 +16,34 @@ export const AddNewPreset = ({onAddPreset}: Props) => {
   return (
     <View>
       <TextInput
+        style={styles.fieldMargin}
         label="Preset name"
         value={presetName}
         onChangeText={text => setPresetName(text)}
       />
       <TextInput
+        style={styles.fieldMargin}
         label="Minutes"
         keyboardType="number-pad"
         value={intervalMinutes}
         onChangeText={text => setIntervalMinutes(text)}
       />
       <TextInput
+        style={styles.fieldMargin}
         label="Seconds"
         keyboardType="number-pad"
         value={intervalSeconds}
         onChangeText={text => setIntervalSeconds(text)}
       />
       <TextInput
+        style={styles.fieldMargin}
         label="Sets"
         keyboardType="number-pad"
         value={intervalSets}
         onChangeText={text => setIntervalSets(text)}
       />
       <TextInput
+        style={styles.fieldMargin}
         label="Rest length"
         keyboardType="number-pad"
         value={intervalRestLength}
@@ -59,3 +64,12 @@ export const AddNewPreset = ({onAddPreset}: Props) => {
     </View>
   );
 };
+
+export const styles = StyleSheet.create({
+  container: {
+    padding: 12,
+  },
+  fieldMargin: {
+    marginBottom: 8,
+  },
+});

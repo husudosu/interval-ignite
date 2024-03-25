@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {ScrollView} from 'react-native';
+import {ScrollView, StyleSheet} from 'react-native';
 import {Button, Text} from 'react-native-paper';
 import {TextInput} from 'react-native-paper';
 import {AddNewPreset} from '../components/AddNewPreset';
@@ -77,28 +77,32 @@ export const HomeView = ({navigation}: Props) => {
   };
   // TODO: Add validation to fields only allow number input!
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <ScrollView>
-        <Text>Quick start</Text>
+        <Text style={styles.title}>Quick start</Text>
         <TextInput
+          style={styles.fieldMargin}
           label="Minutes"
           keyboardType="number-pad"
           value={intervalMinutes}
           onChangeText={text => setIntervalMinutes(text)}
         />
         <TextInput
+          style={styles.fieldMargin}
           label="Seconds"
           keyboardType="number-pad"
           value={intervalSeconds}
           onChangeText={text => setIntervalSeconds(text)}
         />
         <TextInput
+          style={styles.fieldMargin}
           label="Sets"
           keyboardType="number-pad"
           value={intervalSets}
           onChangeText={text => setIntervalSets(text)}
         />
         <TextInput
+          style={styles.fieldMargin}
           label="Rest length"
           keyboardType="number-pad"
           value={intervalRestLength}
@@ -106,10 +110,8 @@ export const HomeView = ({navigation}: Props) => {
         />
         <Button onPress={onStartPress}>Start</Button>
 
-        <Text>Add new preset</Text>
-        <AddNewPreset onAddPreset={onAddNewPreset} />
-
-        <Text>Presets</Text>
+        <Text style={styles.title}>Presets</Text>
+        {presets.length === 0 && <Text>No presets saved.</Text>}
         {presets.map((preset, index) => (
           <Preset
             key={index}
@@ -118,7 +120,25 @@ export const HomeView = ({navigation}: Props) => {
             onDelete={onDeletePreset}
           />
         ))}
+
+        <Text style={styles.title}>Add new preset</Text>
+        <AddNewPreset onAddPreset={onAddNewPreset} />
       </ScrollView>
     </SafeAreaView>
   );
 };
+
+export const styles = StyleSheet.create({
+  container: {
+    padding: 12,
+  },
+  fieldMargin: {
+    marginBottom: 8,
+  },
+  title: {
+    textAlign: 'left',
+    fontSize: 22,
+    marginTop: 12,
+    marginBottom: 12,
+  },
+});
