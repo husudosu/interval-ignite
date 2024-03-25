@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {Button, Text} from 'react-native-paper';
 import {CountdownCircleTimer} from 'react-native-countdown-circle-timer';
 
@@ -46,7 +46,7 @@ export const CountdownView = ({route, navigation}: Props) => {
     }
   };
   return (
-    <View>
+    <View style={styles.container}>
       <CountdownCircleTimer
         key={key}
         onComplete={onCountdownComplete}
@@ -58,10 +58,30 @@ export const CountdownView = ({route, navigation}: Props) => {
         colorsTime={[7, 5, 2, 0]}>
         {({remainingTime}) => <Text>{remainingTime}</Text>}
       </CountdownCircleTimer>
-      <Button onPress={() => setIsPlaying(!isPlaying)}>
-        {isPlaying ? 'Pause' : 'Continue'}
-      </Button>
-      <Button onPress={() => navigation.replace('Home')}>Stop</Button>
+      <View style={styles.buttonContainer}>
+        <Button
+          onPress={() => setIsPlaying(!isPlaying)}
+          icon={isPlaying ? 'pause' : 'play'}>
+          {isPlaying ? 'Pause' : 'Continue'}
+        </Button>
+        <Button onPress={() => navigation.replace('Home')} icon="stop">
+          Stop
+        </Button>
+      </View>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonContainer: {
+    width: '50%',
+    marginTop: 16,
+    flexDirection: 'column',
+    gap: 8,
+  },
+});
