@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {ScrollView, SafeAreaView, StyleSheet} from 'react-native';
-import {Switch} from 'react-native-paper';
+import {Switch, List} from 'react-native-paper';
 import {settings} from '../utils/settings';
 
 export const SettingsView = () => {
@@ -31,12 +31,17 @@ export const SettingsView = () => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
-        <Switch
-          value={soundOn}
-          onValueChange={value => {
-            settings.save({key: 'soundOn', data: value});
-            setSoundOn(value);
-          }}
+        <List.Item
+          title="Sound"
+          right={() => (
+            <Switch
+              value={soundOn}
+              onValueChange={value => {
+                settings.save({key: 'soundOn', data: value});
+                setSoundOn(value);
+              }}
+            />
+          )}
         />
       </ScrollView>
     </SafeAreaView>
