@@ -1,4 +1,4 @@
-package com.interval_timer
+package com.husudosu.interval_ignite
 
 import android.app.Application
 import com.facebook.react.PackageList

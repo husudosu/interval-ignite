@@ -25,7 +25,7 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
-target 'interval_timer' do
+target 'interval_ignite' do
   config = use_native_modules!
 
   use_react_native!(
@@ -39,7 +39,7 @@ target 'interval_timer' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  target 'interval_timerTests' do
+  target 'interval_igniteTests' do
     inherit! :complete
     # Pods for testing
   end
