@@ -24,12 +24,11 @@ export const Preset = ({preset, navigation, onDelete}: Props) => {
 
   return (
     <View>
-      <Text>{preset.id}</Text>
-      <Text>{preset.presetName}</Text>
-      <Text>{preset.intervalMinutes.toString()}</Text>
-      <Text>{preset.intervalSeconds.toString()}</Text>
-      <Text>{preset.intervalSets.toString()}</Text>
-      <Text>{preset.intervalRestLength.toString()}</Text>
+      <Text>Preset name: {preset.presetName}</Text>
+      <Text>Minutes: {preset.intervalMinutes.toString()}</Text>
+      <Text>Seconds: {preset.intervalSeconds.toString()}</Text>
+      <Text>Sets:{preset.intervalSets.toString()}</Text>
+      <Text>Rest: {preset.intervalRestLength.toString()}</Text>
       <Button onPress={onStart}>Start</Button>
       <Button onPress={() => onDelete(preset.id)}>Delete</Button>
     </View>
