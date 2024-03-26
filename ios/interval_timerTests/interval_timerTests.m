@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface interval_timerTests : XCTestCase
+@interface interval_igniteTests : XCTestCase
 
 @end
 
-@implementation interval_timerTests
+@implementation interval_igniteTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL (^)(UIView *view))test
 {

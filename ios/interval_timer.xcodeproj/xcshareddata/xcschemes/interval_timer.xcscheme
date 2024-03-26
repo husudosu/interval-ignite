@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "interval_timer.app"
-               BlueprintName = "interval_timer"
-               ReferencedContainer = "container:interval_timer.xcodeproj">
+               BuildableName = "interval_ignite.app"
+               BlueprintName = "interval_ignite"
+               ReferencedContainer = "container:interval_ignite.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "interval_timerTests.xctest"
-               BlueprintName = "interval_timerTests"
-               ReferencedContainer = "container:interval_timer.xcodeproj">
+               BuildableName = "interval_igniteTests.xctest"
+               BlueprintName = "interval_igniteTests"
+               ReferencedContainer = "container:interval_ignite.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "interval_timer.app"
-            BlueprintName = "interval_timer"
-            ReferencedContainer = "container:interval_timer.xcodeproj">
+            BuildableName = "interval_ignite.app"
+            BlueprintName = "interval_ignite"
+            ReferencedContainer = "container:interval_ignite.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "interval_timer.app"
-            BlueprintName = "interval_timer"
-            ReferencedContainer = "container:interval_timer.xcodeproj">
+            BuildableName = "interval_ignite.app"
+            BlueprintName = "interval_ignite"
+            ReferencedContainer = "container:interval_ignite.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

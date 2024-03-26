@@ -36,7 +36,7 @@ const mainHeaderSettings = ({
 }): NativeStackNavigationOptions => {
   return {
     headerShown: true,
-    headerTitle: 'Interval timer',
+    headerTitle: 'IntervalIgnite',
     headerRight: () => headerRight(navigation),
     headerShadowVisible: false,
   };
