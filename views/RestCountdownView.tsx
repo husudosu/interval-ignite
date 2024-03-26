@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Text, Button} from 'react-native-paper';
 import {CountdownCircleTimer} from 'react-native-countdown-circle-timer';
+import KeepAwake from '@sayem314/react-native-keep-awake';
 
 interface Props {
   route: any;
@@ -33,6 +34,7 @@ export const RestCountdownView = ({route, navigation}: Props) => {
 
   return (
     <View style={styles.container}>
+      <KeepAwake />
       <CountdownCircleTimer
         key={key}
         onComplete={onCountdownComplete}

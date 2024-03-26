@@ -3,6 +3,7 @@ import {StyleSheet, View} from 'react-native';
 import {Button, Text} from 'react-native-paper';
 import {CountdownCircleTimer} from 'react-native-countdown-circle-timer';
 import {SoundFile, playSound} from '../utils/sound';
+import KeepAwake from '@sayem314/react-native-keep-awake';
 
 interface Props {
   route: any;
@@ -48,6 +49,7 @@ export const CountdownView = ({route, navigation}: Props) => {
   };
   return (
     <View style={styles.container}>
+      <KeepAwake />
       <CountdownCircleTimer
         key={key}
         onComplete={onCountdownComplete}
