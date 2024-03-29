@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {ScrollView, StyleSheet} from 'react-native';
-import {Button, Text} from 'react-native-paper';
+import {Button, Dialog, Portal, Text} from 'react-native-paper';
 import {TextInput} from 'react-native-paper';
 import {AddNewPreset} from '../components/AddNewPreset';
 import {SafeAreaView} from 'react-native';
@@ -14,6 +14,9 @@ interface Props {
 }
 
 export const HomeView = ({navigation}: Props) => {
+  const [showDeletionDialog, setShowDeletionDialog] = useState(false);
+  const [presetIdToDelete, setPresetIdToDelete] = useState('');
+
   const [intervalMinutes, setIntervalMinutes] = useState('0');
   const [intervalSeconds, setIntervalSeconds] = useState('2');
   const [intervalSets, setIntervalSets] = useState('3');
@@ -71,10 +74,18 @@ export const HomeView = ({navigation}: Props) => {
   };
 
   const onDeletePreset = (id: string) => {
-    settings.remove({key: 'presets', id}).then(() => {
+    setPresetIdToDelete(id);
+    setShowDeletionDialog(true);
+  };
+
+  const deletePreset = () => {
+    settings.remove({key: 'presets', id: presetIdToDelete}).then(() => {
       loadSettings();
+      setPresetIdToDelete('');
+      setShowDeletionDialog(false);
     });
   };
+
   // TODO: Add validation to fields only allow number input!
   return (
     <SafeAreaView style={styles.container}>
@@ -111,6 +122,24 @@ export const HomeView = ({navigation}: Props) => {
         <Button onPress={onStartPress}>Start</Button>
 
         <Text style={styles.title}>Presets</Text>
+
+        {/* Deletion dialog for presets */}
+        <Portal>
+          <Dialog visible={showDeletionDialog}>
+            <Dialog.Title>Preset</Dialog.Title>
+            <Dialog.Content>
+              <Text variant="bodyMedium">
+                Are you sure about deleting the preset?
+              </Text>
+            </Dialog.Content>
+            <Dialog.Actions>
+              <Button onPress={() => setShowDeletionDialog(false)}>
+                Cancel
+              </Button>
+              <Button onPress={deletePreset}>Delete</Button>
+            </Dialog.Actions>
+          </Dialog>
+        </Portal>
         {presets.length === 0 && <Text>No presets saved.</Text>}
         {presets.map((preset, index) => (
           <Preset
